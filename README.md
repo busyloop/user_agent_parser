@@ -1,6 +1,6 @@
 # user_agent_parser
 
-[![Build Status](https://travis-ci.org/busyloop/user_agent_parser.svg?branch=master)](https://travis-ci.org/busyloop/user_agent_parser)
+[![Build Status](https://travis-ci.com/busyloop/user_agent_parser.svg?branch=master)](https://travis-ci.com/busyloop/user_agent_parser)
 [![GitHub release](https://img.shields.io/github/release/busyloop/user_agent_parser.svg)](https://github.com/busyloop/user_agent_parser/releases)
 [![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](<https://busyloop.github.io/user_agent_parser/>)
 
@@ -27,7 +27,7 @@ require "user_agent_parser"
 ## Load BrowserScope parsing patterns.
 ## If you don't do this then the builtin version
 ## that was present at compile-time is used.
-##
+
 # UserAgent.load_regexes(File.read("regexes.yaml"))
 
 # 1. Parse a user agent string
