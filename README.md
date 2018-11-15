@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/busyloop/user_agent_parser.svg?branch=master)](https://travis-ci.org/busyloop/user_agent_parser)
 [![GitHub release](https://img.shields.io/github/release/busyloop/user_agent_parser.svg)](https://github.com/busyloop/user_agent_parser/releases)
-[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](<LINK-TO-YOUR-DOCUMENTATION>)
+[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](<https://busyloop.github.io/user_agent_parser/>)
 
 A crystal shard for parsing user agent strings using the BrowserScope pattern library.
 It automatically fetches the latest version of [BrowserScope's parsing patterns](https://github.com/ua-parser/uap-core)
@@ -42,6 +42,9 @@ puts ua.device # => UserAgent::Device(@model="SM-G892A", @brand="Samsung", @name
 puts ua.os # => UserAgent::Os(@family="Android", @version=#<SemanticVersion:0x10c1c97e0 @major=7, @minor=0, @patch=0, @build=nil, @prerelease=SemanticVersion::Prerelease(@identifiers=[])>)
 ```
 
+## Documentation
+
+* [API Documentation](https://busyloop.github.io/user_agent_parser/)
 
 
 ## Automatic updates
