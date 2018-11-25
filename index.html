@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.27.0">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
+  <meta id="repository-name" content="github.com/busyloop/user_agent_parser">
+  <title>README - github.com/busyloop/user_agent_parser</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="github.com/busyloop/user_agent_parser/UserAgent" data-name="useragent">
+      <a href="UserAgent.html">UserAgent</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/busyloop/user_agent_parser/UserAgent/Device" data-name="useragent::device">
+      <a href="UserAgent/Device.html">Device</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/busyloop/user_agent_parser/UserAgent/Os" data-name="useragent::os">
+      <a href="UserAgent/Os.html">Os</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1>user_agent_parser</h1>
+
+<p><a href="https://travis-ci.com/busyloop/user_agent_parser" target="_blank"><img src="https://travis-ci.com/busyloop/user_agent_parser.svg?branch=master" alt="Build Status"/></a>
+<a href="https://github.com/busyloop/user_agent_parser/releases" target="_blank"><img src="https://img.shields.io/github/release/busyloop/user_agent_parser.svg" alt="GitHub release"/></a>
+<a href="<https://busyloop.github.io/user_agent_parser/>" target="_blank"><img src="https://img.shields.io/badge/docs-available-brightgreen.svg" alt="Docs"/></a></p>
+
+<p>A crystal shard for parsing user agent strings using the BrowserScope pattern library.
+It automatically fetches the latest version of <a href="https://github.com/ua-parser/uap-core" target="_blank">BrowserScope's parsing patterns</a>
+at compile time and inlines them with your compiled binary.</p>
+
+<h2>Installation</h2>
+
+<p>Add this to your application's <code>shard.yml</code>:</p>
+
+<pre><code class="language-yaml">dependencies:
+  user_agent_parser:
+    github: busyloop/user_agent_parser</code></pre>
+
+<h2>Usage</h2>
+
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;user_agent_parser&quot;</span>
+
+<span class="c">## ** OPTIONAL **</span>
+<span class="c">## Load BrowserScope parsing patterns.</span>
+<span class="c">## If you don&#39;t do this then the builtin version</span>
+<span class="c">## that was present at compile-time is used.</span>
+
+<span class="c"># UserAgent.load_regexes(File.read(&quot;regexes.yaml&quot;))</span>
+
+<span class="c"># 1. Parse a user agent string</span>
+ua <span class="o">=</span> <span class="t">UserAgent</span>.<span class="k">new</span>(<span class="s">&quot;Mozilla/5.0 (Linux; Android 7.0; SM-G892A Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Mobile Safari/537.36&quot;</span>)
+
+<span class="c"># 2. Inspect the result</span>
+puts ua.family <span class="c"># =&gt; Chrome Mobile WebView</span>
+puts ua.version <span class="c"># =&gt; 60.0.3112</span>
+
+puts ua.device <span class="c"># =&gt; UserAgent::Device(@model=&quot;SM-G892A&quot;, @brand=&quot;Samsung&quot;, @name=&quot;Samsung SM-G892A&quot;)</span>
+
+puts ua.os <span class="c"># =&gt; UserAgent::Os(@family=&quot;Android&quot;, @version=#&lt;SemanticVersion:0x10c1c97e0 @major=7, @minor=0, @patch=0, @build=nil, @prerelease=SemanticVersion::Prerelease(@identifiers=[])&gt;)</span></code></pre>
+
+<h2>Documentation</h2>
+
+<ul><li><a href="https://busyloop.github.io/user_agent_parser/" target="_blank">API Documentation</a></li></ul>
+
+<h2>Automatic updates</h2>
+
+<p>By default this shard downloads the latest version of <a href="https://github.com/ua-parser/uap-core" target="_blank">BrowserScope's parsing patterns</a>
+at compile time and inlines it with your binary.</p>
+
+<p>This ensures you get the latest version every time you re-compile your app.</p>
+
+<p>If you wish to update without recompiling your app, you can also
+load a new <code>regexes.yml</code> at runtime via <code>UserAgent.load_regexes("..yaml string..")</code>.</p>
+
+<h2>Contributing</h2>
+
+<ol><li>Fork it (&lt;https://github.com/busyloop/user_agent_parser/fork>)</li><li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li><li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li><li>Push to the branch (<code>git push origin my-new-feature</code>)</li><li>Create a new Pull Request</li></ol>
+
+
+</div>
+</body>
+</html>
