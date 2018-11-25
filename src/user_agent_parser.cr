@@ -58,8 +58,8 @@ class UserAgent
     # :nodoc:
     def self.from_match(match, parser_definition)
       result = {
-        "device" => match[1],
-        "model"  => match[1],
+        "device" => (match[1] rescue nil),
+        "model"  => (match[1] rescue nil),
         "brand"  => nil,
       }
 
@@ -80,10 +80,10 @@ class UserAgent
     # :nodoc:
     def self.from_match(match, parser_definition)
       result = {
-        "os" => match[1],
+        "os" => (match[1] rescue nil),
       }
       version = ""
-      (2..match.size - 1).each do |i|
+      (2..4).each do |i|
         result["v#{i - 1}"] = (match[i] rescue "0")
       end
       result["version"] = version
@@ -96,7 +96,7 @@ class UserAgent
       if result["os"].nil?
         nil
       else
-        new family: result["os"], version: SemanticVersion.new(result["v1"].to_i, result["v2"].to_i, result["v3"].to_i)
+        new family: result["os"], version: SemanticVersion.new(result["v1"].not_nil!.to_i, result["v2"].not_nil!.to_i, result["v3"].not_nil!.to_i)
       end
     end
   end
@@ -165,9 +165,9 @@ class UserAgent
 
     def from_match(match, parser_definition)
       result = {
-        "family" => match[1],
+        "family" => (match[1] rescue nil),
       }
-      (2..match.size - 1).each do |i|
+      (2..4).each do |i|
         result["v#{i - 1}"] = (match[i] rescue "0")
       end
 
@@ -176,7 +176,7 @@ class UserAgent
         result[template_id.sub("_replacement", "")] = Parser.interpolate(template, match).strip if template
       end
 
-      return result["family"], SemanticVersion.new(result["v1"].to_i, result["v2"].to_i, result["v3"].to_i)
+      return result["family"], SemanticVersion.new(result["v1"].not_nil!.to_i, result["v2"].not_nil!.to_i, result["v3"].not_nil!.to_i)
     end
 
     def self.interpolate(template : String, m : Regex::MatchData)

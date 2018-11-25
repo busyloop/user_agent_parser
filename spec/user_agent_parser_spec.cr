@@ -38,4 +38,20 @@ describe UserAgent do
     ua.os.should be_nil
     ua.version.not_nil!.to_s.should eq("7.54.0")
   end
+
+  it "identifies generic Android" do
+    ua_str = "Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; Build/KLP) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30"
+    ua = UserAgent.new(ua_str)
+
+    ua.user_agent.not_nil!.should eq(ua_str)
+    ua.family.not_nil!.should eq("Android")
+    ua.device.not_nil!.brand.should eq("Generic")
+    ua.device.not_nil!.model.should eq("Smartphone")
+    ua.device.not_nil!.name.should eq("Generic Smartphone")
+
+    ua.os.not_nil!.family.should eq("Android")
+    ua.os.not_nil!.version.to_s.should eq("4.1.1")
+    ua.version.not_nil!.to_s.should eq("4.1.1")
+  end
+
 end
