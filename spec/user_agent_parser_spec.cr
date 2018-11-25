@@ -54,4 +54,18 @@ describe UserAgent do
     ua.version.not_nil!.to_s.should eq("4.1.1")
   end
 
+  it "identifies generic iPhone Safari" do
+    ua_str = "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.0 Mobile/15E148 Safari/604.1"
+    ua = UserAgent.new(ua_str)
+
+    ua.user_agent.not_nil!.should eq(ua_str)
+    ua.family.not_nil!.should eq("Mobile Safari")
+    ua.device.not_nil!.brand.should eq("Apple")
+    ua.device.not_nil!.model.should eq("iPhone")
+    ua.device.not_nil!.name.should eq("iPhone")
+
+    ua.os.not_nil!.family.should eq("iOS")
+    ua.os.not_nil!.version.to_s.should eq("11.4.1")
+    ua.version.not_nil!.to_s.should eq("11.0.0")
+  end
 end

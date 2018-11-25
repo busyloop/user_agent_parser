@@ -180,8 +180,11 @@ class UserAgent
     end
 
     def self.interpolate(template : String, m : Regex::MatchData)
-      (0..m.size - 1).each do |i|
-        template = template.sub("$#{i}", m[i])
+      begin
+        (0..m.size - 1).each do |i|
+          template = template.sub("$#{i}", m[i])
+        end
+      rescue
       end
       template
     end
