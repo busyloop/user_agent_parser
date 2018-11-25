@@ -1,6 +1,6 @@
 name: user_agent_parser
 description: Parse user agent strings using the BrowserScope pattern library.
-version: 1.0.0
+version: 1.0.1
 
 authors:
   - moe <moe@busyloop.net>
