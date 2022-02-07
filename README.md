@@ -37,16 +37,6 @@ puts ua.device # => UserAgent::Device(@model="SM-G892A", @brand="Samsung", @name
 puts ua.os # => UserAgent::Os(@family="Android", @version=#<SemanticVersion:0x10c1c97e0 @major=7, @minor=0, @patch=0, @build=nil, @prerelease=SemanticVersion::Prerelease(@identifiers=[])>)
 ```
 
-## Automatic updates
-
-By default this shard downloads the latest version of [BrowserScope's parsing patterns](https://github.com/ua-parser/uap-core)
-at compile time and inlines it with your binary.
-
-This ensures you get the latest version every time you re-compile your app.
-
-If you wish to update without recompiling your app, you can also
-load a new `regexes.yml` at runtime via `UserAgent.load_regexes("..yaml string..")`.
-
 ## Contributing
 
 1. Fork it (<https://github.com/busyloop/user_agent_parser/fork>)
