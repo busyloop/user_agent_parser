@@ -19,3 +19,5 @@ doc:
 cloc:
 	cloc --exclude-dir=lib,docs --exclude-lang=Markdown,YAML .
 
+clean:
+	rm -rf bin/ameba lib

@@ -25,31 +25,32 @@ DEVICE_REPLACEMENT_KEYS = %w[
 class UserAgent
   # :nodoc:
   class ParserDefinition
-    YAML.mapping(
-      regex: String,
-      regex_flag: String?,
-      family_replacement: String?,
-      v1_replacement: String?,
-      v2_replacement: String?,
-      v3_replacement: String?,
-      os_v1_replacement: String?,
-      os_v2_replacement: String?,
-      os_v3_replacement: String?,
-      os_replacement: String?,
-      device_replacement: String?,
-      brand_replacement: String?,
-      model_replacement: String?
-    )
+    include YAML::Serializable
+
+    property regex : String
+    property regex_flag : String?
+    property family_replacement : String?
+    property v1_replacement : String?
+    property v2_replacement : String?
+    property v3_replacement : String?
+    property os_v1_replacement : String?
+    property os_v2_replacement : String?
+    property os_v3_replacement : String?
+    property os_replacement : String?
+    property device_replacement : String?
+    property brand_replacement : String?
+    property model_replacement : String?
+
     include PropertyReflection
   end
 
   # :nodoc:
   class ParserCollections
-    YAML.mapping(
-      user_agent_parsers: Array(ParserDefinition),
-      os_parsers: Array(ParserDefinition),
-      device_parsers: Array(ParserDefinition),
-    )
+    include YAML::Serializable
+
+    property user_agent_parsers : Array(ParserDefinition)
+    property os_parsers : Array(ParserDefinition)
+    property device_parsers : Array(ParserDefinition)
 
     include PropertyReflection
   end
@@ -122,8 +123,9 @@ class UserAgent
     @regexes = {} of String => Array(Regex)
 
     def self.instance(regexes_yaml)
+      raise Exception.new("Must load patterns with UserAgent.load_regexes() first") if @@instance.nil? && regexes_yaml.nil?
       return @@instance unless @@instance.nil?
-      @@instance = new(regexes_yaml || {{ `curl -s https://raw.githubusercontent.com/ua-parser/uap-core/master/regexes.yaml`.stringify }})
+      @@instance = new(regexes_yaml.not_nil!)
     end
 
     def initialize(regexes_yaml)

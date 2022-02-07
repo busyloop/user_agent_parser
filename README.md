@@ -23,12 +23,10 @@ dependencies:
 ```crystal
 require "user_agent_parser"
 
-## ** OPTIONAL **
-## Load BrowserScope parsing patterns.
-## If you don't do this then the builtin version
-## that was present at compile-time is used.
+## Load BrowserScope parsing patterns, latest version
+## can be found here: https://raw.githubusercontent.com/ua-parser/uap-core/master/regexes.yaml
 
-# UserAgent.load_regexes(File.read("regexes.yaml"))
+UserAgent.load_regexes(File.read("regexes.yaml"))
 
 # 1. Parse a user agent string
 ua = UserAgent.new("Mozilla/5.0 (Linux; Android 7.0; SM-G892A Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Mobile Safari/537.36")

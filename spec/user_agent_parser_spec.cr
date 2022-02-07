@@ -1,5 +1,9 @@
 require "./spec_helper"
 
+Spec.before_suite do
+  UserAgent.load_regexes(File.read("fixtures/regexes.yaml"))
+end
+
 describe UserAgent do
   it "identifies Android Webview" do
     ua_str = "Mozilla/5.0 (Linux; Android 7.0; SM-G892A Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Mobile Safari/537.36"
@@ -22,7 +26,8 @@ describe UserAgent do
 
     ua.user_agent.not_nil!.should eq(ua_str)
     ua.family.not_nil!.should eq("Chrome")
-    ua.device.should be_nil
+    ua.device.not_nil!.model.should eq("Mac")
+    ua.device.not_nil!.brand.should eq("Apple")
     ua.os.not_nil!.family.should eq("Mac OS X")
     ua.os.not_nil!.version.to_s.should eq("10.14.1")
     ua.version.not_nil!.to_s.should eq("70.0.3538")
@@ -45,9 +50,9 @@ describe UserAgent do
 
     ua.user_agent.not_nil!.should eq(ua_str)
     ua.family.not_nil!.should eq("Android")
-    ua.device.not_nil!.brand.should eq("Generic")
-    ua.device.not_nil!.model.should eq("Smartphone")
-    ua.device.not_nil!.name.should eq("Generic Smartphone")
+    ua.device.not_nil!.brand.should eq("Generic_Android")
+    ua.device.not_nil!.model.should eq("Build/KLP")
+    ua.device.not_nil!.name.should eq("Build/KLP")
 
     ua.os.not_nil!.family.should eq("Android")
     ua.os.not_nil!.version.to_s.should eq("4.1.1")
