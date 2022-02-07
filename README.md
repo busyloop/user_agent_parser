@@ -1,6 +1,5 @@
 # user_agent_parser
 
-[![Build Status](https://travis-ci.com/busyloop/user_agent_parser.svg?branch=master)](https://travis-ci.com/busyloop/user_agent_parser)
 [![GitHub release](https://img.shields.io/github/release/busyloop/user_agent_parser.svg)](https://github.com/busyloop/user_agent_parser/releases)
 [![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](<https://busyloop.github.io/user_agent_parser/>)
 
