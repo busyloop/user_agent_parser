@@ -4,8 +4,6 @@
 [![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](<https://busyloop.github.io/user_agent_parser/>)
 
 A crystal shard for parsing user agent strings using the BrowserScope pattern library.
-It automatically fetches the latest version of [BrowserScope's parsing patterns](https://github.com/ua-parser/uap-core)
-at compile time and inlines them with your compiled binary.
 
 ## Installation
 
@@ -22,7 +20,7 @@ dependencies:
 ```crystal
 require "user_agent_parser"
 
-## Load BrowserScope parsing patterns, latest version
+## Load BrowserScope patterns, latest version
 ## can be found here: https://raw.githubusercontent.com/ua-parser/uap-core/master/regexes.yaml
 
 UserAgent.load_regexes(File.read("regexes.yaml"))
